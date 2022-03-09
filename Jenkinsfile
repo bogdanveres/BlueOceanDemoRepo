@@ -28,7 +28,7 @@ pipeline {
           steps {
             sh 'echo "execute shell 2"'
             sh 'sleep 10'
-            writeFile(file: 'pipeline_steps.log', text: 'I\'m running inside: ${WORKSPACE} ')
+            writeFile(file: 'pipeline_steps.log', text: 'I\'m running inside: ${WORKSPACE}  + ${myEnvVar}}')
           }
         }
 
@@ -53,5 +53,8 @@ pipeline {
       }
     }
 
+  }
+  environment {
+    myEnvVar = 'blabla'
   }
 }
