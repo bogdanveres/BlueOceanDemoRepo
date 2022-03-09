@@ -28,6 +28,7 @@ pipeline {
           steps {
             sh 'echo "execute shell 2"'
             sh 'sleep 10'
+            writeFile(file: 'pipeline_steps.log', text: 'I\'m running inside: ${WORKSPACE} ')
           }
         }
 
@@ -41,6 +42,7 @@ pipeline {
         }
 
         echo 'Test message ${WORKSPACE}'
+        archiveArtifacts '**/*.log'
       }
     }
 
