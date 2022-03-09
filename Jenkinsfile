@@ -3,7 +3,7 @@ pipeline {
   stages {
     stage('Prepare Env') {
       steps {
-        node(label: 'built-in') {
+        node(label: 'MacOS') {
           sleep 5
         }
 
