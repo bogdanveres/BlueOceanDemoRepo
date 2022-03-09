@@ -40,7 +40,14 @@ pipeline {
           sh 'echo "timestamp"'
         }
 
+        echo 'Test message ${WORKSPACE}'
+      }
+    }
+
+    stage('Delete Workspace') {
+      steps {
         cleanWs()
+        input(message: 'Do you want to delete workspace?', id: 'OK')
       }
     }
 
