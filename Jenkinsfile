@@ -28,7 +28,7 @@ pipeline {
           steps {
             sh 'echo "execute shell 2"'
             sh 'sleep 10'
-            writeFile(file: 'pipeline_steps.log', text: 'I\'m running inside: ${myEnvVar}')
+            writeFile(file: 'pipeline_steps.log', text: 'added from parallel execution ${MYENVVAR}')
           }
         }
 
@@ -55,6 +55,6 @@ pipeline {
 
   }
   environment {
-    myEnvVar = 'blabla'
+    MYENVVAR = 'blabla'
   }
 }
