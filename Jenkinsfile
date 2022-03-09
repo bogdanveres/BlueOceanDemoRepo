@@ -36,6 +36,10 @@ pipeline {
 
     stage('Clean') {
       steps {
+        timestamps() {
+          sh 'echo "timestamp"'
+        }
+
         cleanWs()
       }
     }
