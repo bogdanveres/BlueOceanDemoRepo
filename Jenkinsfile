@@ -18,6 +18,10 @@ pipeline {
             node(label: 'built-in') {
               echo 'executed on built-in agent'
               sleep 5
+              timestamps() {
+                echo 'this is the line with timestamp'
+              }
+
             }
 
           }
@@ -56,7 +60,7 @@ pipeline {
 
     stage('Clean Workspace') {
       steps {
-        node(label: 'MacOSAGent') {
+        node(label: 'MacOSAgent') {
           cleanWs(deleteDirs: true, cleanWhenAborted: true, cleanWhenFailure: true, cleanWhenNotBuilt: true, cleanWhenSuccess: true, cleanWhenUnstable: true, cleanupMatrixParent: true)
         }
 
