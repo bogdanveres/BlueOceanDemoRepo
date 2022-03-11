@@ -54,6 +54,15 @@ pipeline {
       }
     }
 
+    stage('Clean Workspace') {
+      steps {
+        node(label: 'MacOSAGent') {
+          cleanWs(deleteDirs: true, cleanWhenAborted: true, cleanWhenFailure: true, cleanWhenNotBuilt: true, cleanWhenSuccess: true, cleanWhenUnstable: true, cleanupMatrixParent: true)
+        }
+
+      }
+    }
+
   }
   environment {
     JENKINS_JOB = 'BlueOcean'
