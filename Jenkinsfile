@@ -36,6 +36,24 @@ pipeline {
       }
     }
 
+    stage('Save results') {
+      steps {
+        node(label: 'MacOSAgent') {
+          writeFile(file: 'test_execution.log', text: 'bla bla bla')
+        }
+
+      }
+    }
+
+    stage('Publish results') {
+      steps {
+        node(label: 'MacOSAgent') {
+          archiveArtifacts '**/*.log'
+        }
+
+      }
+    }
+
   }
   environment {
     JENKINS_JOB = 'BlueOcean'
